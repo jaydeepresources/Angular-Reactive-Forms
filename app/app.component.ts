@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +8,17 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AppComponent {
 
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-  });
+  profileForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required]
+  })
+
+  constructor(private fb: FormBuilder) {
+
+  }
 
   formSubmit() {
-    console.log(this.profileForm);
+    console.log(this.profileForm)
   }
 
 }
