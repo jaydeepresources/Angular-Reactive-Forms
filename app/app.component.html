@@ -1,0 +1,20 @@
+<div class="container">
+
+  <p class="display-4">App Page</p>
+
+  <form [formGroup]="profileForm" (ngSubmit)="formSubmit()">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" class="form-control" placeholder="Enter first name" formControlName="firstName" required>
+      <div class="text-danger my-2" *ngIf="profileForm.controls.firstName.dirty && profileForm.controls.firstName.invalid">First Name can't be empty</div>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" class="form-control" placeholder="Enter last name" formControlName="lastName" required>
+      <div class="text-danger my-2" *ngIf="profileForm.controls.lastName.dirty && profileForm.controls.lastName.invalid">Last Name can't be empty</div>      
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Submit</button>
+  </form>
+</div>
